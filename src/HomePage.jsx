@@ -49,7 +49,7 @@ const data = {
     { degree: "B.C.A in Computer Science", institution: "Karnataka University Dharwad (KUD)", cgpa: "8.2 / 10", period: "2021 – 2024" },
   ],
   languages: "English (Professional), Kannada (Native), Hindi (Conversational)",
-  authorization: "Indian Citizen – eligible to work across India",
+  authorization: "Indian Citizen — open to global opportunities and international collaboration",
 };
 
 const Section = ({ title, children }) => (
