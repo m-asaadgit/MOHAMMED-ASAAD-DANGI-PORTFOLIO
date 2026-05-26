@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // ✅ Place your resume PDF inside the /public folder
 // and update the filename below:
-const RESUME_PDF_PATH = "/public/MOHAMMED_ASAAD_DANGI_RESUME.pdf";
+const RESUME_PDF_PATH = "/MOHAMMED_ASAAD_DANGI_RESUME.pdf";
 
 const data = {
   name: "Mohammed Asaad Dangi",
