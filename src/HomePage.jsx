@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ChatComp from "../src/assets/RAG/ChatComp";
 
 // ✅ Place your resume PDF inside the /public folder
 // and update the filename below:
@@ -6,7 +7,7 @@ const RESUME_PDF_PATH = "/MOHAMMED_ASAAD_DANGI_RESUME.pdf";
 
 const data = {
   name: "Mohammed Asaad Dangi",
-  roles: ["Software Engineer",  "Frontend Engineer", "Entry Level", "Full Stack Development"],
+  roles: ["Software Engineer", "Frontend Engineer", "Entry Level", "Full Stack Development"],
   contact: {
     phone: "+91-7022909765",
     email: "asaaddangi20@gmail.com",
@@ -73,6 +74,8 @@ const Tag = ({ children }) => (
 );
 
 export default function ResumePage() {
+  const [chatOpen, setChatOpen] = useState(false);
+
   return (
     <>
       <style>{`
@@ -104,10 +107,12 @@ export default function ResumePage() {
         .contact-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: #7a9bbf; font-family: 'DM Mono', monospace; }
         .contact-dot { color: #1e3a5f; }
 
-        /* ── Download button centered ── */
+        /* ── Buttons centered ── */
         .btn-bar {
           display: flex;
           justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px;
           margin: 22px 0 30px;
         }
         .download-btn {
@@ -216,20 +221,23 @@ export default function ResumePage() {
             </div>
           </div>
 
-          {/* ── DOWNLOAD BUTTON — centered ── */}
+          {/* ── DOWNLOAD + CHAT BUTTONS ── */}
           <div className="btn-bar">
-            <a
-              className="download-btn"
-              href={RESUME_PDF_PATH}
-              download="Mohammed_Asaad_Dangi_Resume.pdf"
-            >
+            <a className="download-btn" href={RESUME_PDF_PATH} download="Mohammed_Asaad_Dangi_Resume.pdf">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
               Download Resume
             </a>
+
+            <button className="download-btn" onClick={() => setChatOpen(true)}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              Chat with Bot
+            </button>
           </div>
 
           {/* ── DIVIDER ── */}
@@ -305,13 +313,15 @@ export default function ResumePage() {
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "20px", fontSize: "clamp(11px, 1.4vw, 12px)", color: "#5a7a96", lineHeight: "1.7", fontStyle: "italic", fontFamily: "'DM Mono', monospace" }}>
             I hereby declare that the information provided above is true and correct to the best of my knowledge and belief. I confirm that I possess the technical skills and experience mentioned in this resume and can demonstrate them during interviews or assessments.
           </div>
-
         </div>
 
         <div style={{ textAlign: "center", marginTop: "20px", fontSize: "11px", fontFamily: "'DM Mono', monospace", color: "#2a4060", letterSpacing: "0.1em" }}>
           asaaddangi20@gmail.com · Bengaluru, Karnataka
         </div>
       </div>
+
+      {/* ── CHATBOT ── */}
+      <ChatComp open={chatOpen} onClose={() => setChatOpen(false)} />
     </>
   );
 }
