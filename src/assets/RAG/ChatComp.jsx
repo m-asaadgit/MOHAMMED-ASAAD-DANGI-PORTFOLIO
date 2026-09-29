@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const CHAT_API_URL = "http://localhost:5000/api/chat";
-
+const CHAT_API_URL = import.meta.env.VITE_CHAT_API_URL;
 const SUGGESTIONS = ["Skills", "Projects", "Experience", "Education", "Contact"];
 
 function ChatComp({ open, onClose }) {
